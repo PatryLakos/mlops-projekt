@@ -30,9 +30,7 @@ for r in results:
     )
 
 best = max(results, key=lambda r: r["f1_macro"])
-client.set_registered_model_alias(
-    name=MODEL_NAME, alias=ALIAS, version=best["version"]
-)
+client.set_registered_model_alias(name=MODEL_NAME, alias=ALIAS, version=best["version"])
 print(
     f"\nAlias '{ALIAS}' wskazuje teraz wersję {best['version']} "
     f"(f1_macro = {best['f1_macro']:.4f})"

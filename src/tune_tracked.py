@@ -1,4 +1,3 @@
-import mlflow
 import optuna
 from optuna_integration.mlflow import MLflowCallback
 from sklearn.datasets import load_breast_cancer
