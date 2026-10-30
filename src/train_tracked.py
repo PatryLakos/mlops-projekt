@@ -2,12 +2,16 @@ import matplotlib
 
 matplotlib.use("Agg")
 
-import matplotlib.pyplot as plt
-import mlflow
-from sklearn.datasets import load_breast_cancer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import ConfusionMatrixDisplay, accuracy_score, f1_score
-from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt  # noqa: E402
+import mlflow  # noqa: E402
+from sklearn.datasets import load_breast_cancer  # noqa: E402
+from sklearn.ensemble import RandomForestClassifier  # noqa: E402
+from sklearn.metrics import (  # noqa: E402
+    ConfusionMatrixDisplay,
+    accuracy_score,
+    f1_score,
+)
+from sklearn.model_selection import train_test_split  # noqa: E402
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("lab3-reczne-logowanie")

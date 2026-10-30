@@ -1,4 +1,5 @@
-# Ćwiczenie samodzielne 2: badanie Optuny jako uruchomienie nadrzędne, próby jako nested runs
+# Ćwiczenie samodzielne 2: badanie Optuny jako uruchomienie nadrzędne,
+# a poszczególne próby jako uruchomienia zagnieżdżone (nested runs)
 import mlflow
 import optuna
 from sklearn.datasets import load_breast_cancer

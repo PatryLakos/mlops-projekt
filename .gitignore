@@ -5,3 +5,9 @@ __pycache__/
 mlruns/
 mlartifacts/
 .env
+
+# Artefakty lokalne (Optuna, MLflow, ruff, pytest)
+optuna.db
+confusion_matrix.png
+.pytest_cache/
+.ruff_cache/
