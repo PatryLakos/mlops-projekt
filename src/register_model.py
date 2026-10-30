@@ -17,9 +17,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 best_params = {
-    "n_estimators": 330,
-    "max_depth": 15,
-    "min_samples_split": 4,
+    "n_estimators": 294,
+    "max_depth": 10,
+    "min_samples_split": 2,
     "random_state": 42,
 }
 
