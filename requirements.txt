@@ -10,3 +10,5 @@ dvc
 ruff
 pytest
 pre-commit
+fastapi
+uvicorn
