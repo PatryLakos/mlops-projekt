@@ -10,7 +10,7 @@ data:
 	dvc pull
 
 serve:
-	$(PYTHON)-m uvicorn src.api:app --host 127.0.0.1 --port 8000 --reload
+	python -m uvicorn src.api:app --host 127.0.0.1 --port 8000 --reload
 
 lint:
 	ruff check $(KATALOGI)
