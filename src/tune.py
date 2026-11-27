@@ -2,10 +2,12 @@ import optuna
 from optuna_integration.mlflow import MLflowCallback
 from sklearn.model_selection import cross_val_score
 
+from src.config import KONFIGURACJA
 from src.data import load_data, split_data
 from src.train import STORAGE, STUDY_NAME, TRACKING_URI, build_model
 
-N_TRIALS = 50
+N_TRIALS = KONFIGURACJA["strojenie"]["liczba_prob"]
+METRYKA = KONFIGURACJA["strojenie"]["metryka"]
 
 
 def objective(trial, X_train, y_train):
@@ -30,7 +32,7 @@ def main():
 
     mlflow_callback = MLflowCallback(
         tracking_uri=TRACKING_URI,
-        metric_name="cv_accuracy",
+        metric_name=METRYKA,
     )
 
     study = optuna.create_study(

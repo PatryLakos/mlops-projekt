@@ -5,3 +5,18 @@ model:
   nazwa: breast_cancer
   alias: champion
   liczba_cech: 30
+
+# Wartosci dla src/train.py
+trening:
+  eksperyment: trening-finalny
+  nazwa_runu: model-finalny
+  domyslne_parametry:
+    n_estimators: 100
+    max_depth: 5
+
+# Wartosci dla src/tune.py
+strojenie:
+  storage: sqlite:///optuna.db
+  nazwa_badania: breast_cancer
+  liczba_prob: 50
+  metryka: cv_accuracy

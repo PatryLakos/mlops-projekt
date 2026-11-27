@@ -1,22 +1,12 @@
-import os
 from contextlib import asynccontextmanager
-from pathlib import Path
 
 import mlflow.sklearn
 import numpy as np
-import yaml
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
-# Sciezka do pliku konfiguracyjnego w katalogu glownym projektu
-SCIEZKA_KONFIGURACJI = Path(__file__).resolve().parent.parent / "config.yaml"
+from src.config import KONFIGURACJA, MLFLOW_URI, NAZWA_MODELU
 
-with open(SCIEZKA_KONFIGURACJI, encoding="utf-8") as plik:
-    KONFIGURACJA = yaml.safe_load(plik)
-
-# Zmienna srodowiskowa ma pierwszenstwo przed wartoscia z pliku
-MLFLOW_URI = os.getenv("MLFLOW_URI", KONFIGURACJA["mlflow"]["tracking_uri"])
-NAZWA_MODELU = KONFIGURACJA["model"]["nazwa"]
 ALIAS_MODELU = KONFIGURACJA["model"]["alias"]
 LICZBA_CECH = KONFIGURACJA["model"]["liczba_cech"]
 
