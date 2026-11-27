@@ -4,15 +4,18 @@ import optuna
 from mlflow.models import infer_signature
 from sklearn.ensemble import RandomForestClassifier
 
+from src.config import KONFIGURACJA, MLFLOW_URI, NAZWA_MODELU
 from src.data import load_data, split_data
 from src.evaluate import evaluate_f1, evaluate_model
 
-STORAGE = "sqlite:///optuna.db"
-STUDY_NAME = "breast_cancer"
-TRACKING_URI = "http://127.0.0.1:5000"
-NAZWA_MODELU = "breast_cancer"
+# Wszystkie wartosci konfiguracyjne pochodza z config.yaml
+STORAGE = KONFIGURACJA["strojenie"]["storage"]
+STUDY_NAME = KONFIGURACJA["strojenie"]["nazwa_badania"]
+TRACKING_URI = MLFLOW_URI
+EKSPERYMENT = KONFIGURACJA["trening"]["eksperyment"]
+NAZWA_RUNU = KONFIGURACJA["trening"]["nazwa_runu"]
 
-DOMYSLNE_PARAMETRY = {"n_estimators": 100, "max_depth": 5}
+DOMYSLNE_PARAMETRY = KONFIGURACJA["trening"]["domyslne_parametry"]
 
 
 def get_best_params():
@@ -47,8 +50,8 @@ def main():
     print(f"Trafnosc modelu na zbiorze testowym: {accuracy:.4f}, F1 macro: {f1:.4f}")
 
     mlflow.set_tracking_uri(TRACKING_URI)
-    mlflow.set_experiment("trening-finalny")
-    with mlflow.start_run(run_name="model-finalny"):
+    mlflow.set_experiment(EKSPERYMENT)
+    with mlflow.start_run(run_name=NAZWA_RUNU):
         mlflow.log_params(params)
         mlflow.log_metric("accuracy", accuracy)
         mlflow.log_metric("f1_macro", f1)
